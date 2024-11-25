@@ -1,10 +1,8 @@
-
-"use client"
 import localFont from "next/font/local";
 import "./globals.css";
 import ConvexClientProvider from "../../providers/ConvexClientProvider";
-import { Authenticated, AuthLoading } from "convex/react";
-import LoadingLogo from "@/components/shared/LoadingLogo";
+import { TooltipProvider } from "@/components/ui/tooltip";
+
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -24,11 +22,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-      >
-        <ConvexClientProvider>
-          <AuthLoading><LoadingLogo/></AuthLoading>
-          <Authenticated>{children}</Authenticated>
+      <body>
+          <ConvexClientProvider>
+            <TooltipProvider>{children}</TooltipProvider>
           </ConvexClientProvider>
       </body>
     </html>

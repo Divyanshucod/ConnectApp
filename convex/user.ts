@@ -12,7 +12,7 @@ export const create = internalMutation({
       }
 })
 
-export const get = internalMutation({
+export const get = internalQuery({
     args:{
         clerkId: v.string()
     },
