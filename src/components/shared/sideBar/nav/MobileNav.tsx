@@ -6,11 +6,14 @@ import { UserButton } from "@clerk/nextjs";
 import Link from "next/link";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { Button } from "@/components/ui/button";
+import { useConversation } from "../../../../../hooks/useConversation";
 
 type Props = {};
 
 const MobileNav = (props: Props) => {
   const path = useNavigation();
+  const {isActive} = useConversation()
+  if(isActive) return null;
   return (
     <Card className="fixed bottom-4 w-[calc(100vw-32px)] flex items-center h-16 p-2 lg:hidden">
       <nav className="w-full ">

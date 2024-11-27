@@ -1,10 +1,13 @@
+import ConversationFallBack from '@/components/shared/conversation/ConversationFallBack'
+
 import React from 'react'
 
-type Props = {}
+type Props = React.PropsWithChildren<{}>
 
 const ConversationsPage = (props: Props) => {
-  return (
-    <div>ConversationsPage</div>
+  return (<>
+    <ConversationFallBack/>
+   </>
   )
 }
 
