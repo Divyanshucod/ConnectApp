@@ -7,6 +7,7 @@ import Link from "next/link";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { Button } from "@/components/ui/button";
 import { useConversation } from "../../../../../hooks/useConversation";
+import { ThemeToggle } from "@/components/ui/theme/theme-toggle";
 
 type Props = {};
 
@@ -39,7 +40,10 @@ const MobileNav = (props: Props) => {
             </li>
           );
         })}
-         <li className="flex flex-col items-center g-4">
+        <li>
+         <ThemeToggle/>
+        </li>
+         <li>
         <UserButton />
       </li>
       </ul>

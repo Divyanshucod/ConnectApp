@@ -2,6 +2,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import ConvexClientProvider from "../../providers/ConvexClientProvider";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { ThemeProvider } from "@/components/ui/theme/theme-provider";
 
 
 const geistSans = localFont({
@@ -23,9 +24,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <ThemeProvider  attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange>
           <ConvexClientProvider>
             <TooltipProvider>{children}</TooltipProvider>
           </ConvexClientProvider>
+          </ThemeProvider>
       </body>
     </html>
   );
