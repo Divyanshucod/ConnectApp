@@ -5,7 +5,7 @@ import { useMemo } from "react"
 export const useNavigation = ()=>{
      const pathName = usePathname()
 
-     const paths = useMemo(()=>{
+     const paths = useMemo(()=>(
         [
             {
                 name:'Conversations',
@@ -20,7 +20,7 @@ export const useNavigation = ()=>{
                 active:pathName == '/friends'
             }
         ]
-     },[pathName])
+    ),[pathName])
 
-     return paths
+     return paths;
 }
