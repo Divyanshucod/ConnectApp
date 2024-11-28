@@ -3,6 +3,7 @@ import "./globals.css";
 import ConvexClientProvider from "../../providers/ConvexClientProvider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/components/ui/theme/theme-provider";
+import { Toaster } from "@/components/ui/sonner";
 
 
 const geistSans = localFont({
@@ -29,7 +30,9 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange>
           <ConvexClientProvider>
-            <TooltipProvider>{children}</TooltipProvider>
+            <TooltipProvider>
+              {children}</TooltipProvider>
+              <Toaster richColors />
           </ConvexClientProvider>
           </ThemeProvider>
       </body>

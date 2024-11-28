@@ -1,8 +1,9 @@
 "use client"
-import { Card } from '@/components/ui/card'
+
 import { cn } from '@/lib/utils'
 import React, { act } from 'react'
 import { useConversation } from '../../../../hooks/useConversation'
+import { Card } from '@/components/ui/card'
 
 type Props = React.PropsWithChildren<{
     title:string,

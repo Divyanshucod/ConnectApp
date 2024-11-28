@@ -11,12 +11,12 @@ import { ThemeToggle } from "@/components/ui/theme/theme-toggle";
 type Props = {};
 
 const DesktopNav = (props: Props) => {
-  const path = useNavigation();
+  const paths = useNavigation();
   return (
     <Card className="hidden lg:flex lg:flex-col lg:justify-between lg:items-center lg:h-full lg:w-16 lg:px-2 lg:py-4">
       <nav>
-      <ul className="flex flex-col items-center g-4">
-        {path.map((path: any, id: any) => {
+      <ul className="flex flex-col items-center gap-4">
+        {paths.map((path: any, id: any) => {
           return (
             <li key={id} className="relative">
               <Link href={path.href}>
@@ -39,7 +39,7 @@ const DesktopNav = (props: Props) => {
         })}
         </ul>
       </nav>
-      <div className="flex flex-col items-center g-4">
+      <div className="flex flex-col items-center gap-4">
         <ThemeToggle/>
         <UserButton />
       </div>
