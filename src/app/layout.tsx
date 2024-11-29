@@ -1,3 +1,4 @@
+
 import localFont from "next/font/local";
 import "./globals.css";
 import ConvexClientProvider from "../../providers/ConvexClientProvider";
@@ -23,7 +24,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body>
         <ThemeProvider  attribute="class"
             defaultTheme="system"
