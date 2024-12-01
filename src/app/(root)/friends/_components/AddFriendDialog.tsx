@@ -15,6 +15,7 @@ import { toast } from 'sonner'
 import { ConvexError } from 'convex/values'
 import { useMutationState } from '../../../../../hooks/useMutationState'
 import { api } from '../../../../../convex/_generated/api'
+import CustomDiv from '@/components/ui/CustomDiv'
 
 type Props = {}
 
@@ -44,7 +45,7 @@ const AddFriendDialog = (props: Props) => {
     <Dialog>
         <Tooltip>
             <TooltipTrigger>
-             <Button size='icon' variant='outline'>
+             <Button>
                <DialogTrigger>
                   <UserPlus/>
                </DialogTrigger>
@@ -73,7 +74,7 @@ const AddFriendDialog = (props: Props) => {
                        </FormItem>
                      }/>
                      <DialogFooter>
-                        <Button disabled={false} type='submit'>Send</Button>
+                        <Button disabled={pending} type='submit'>Send</Button>
                      </DialogFooter>
                 </form>
             </Form>

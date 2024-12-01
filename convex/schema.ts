@@ -11,5 +11,5 @@ export default defineSchema({
     requests: defineTable({
         sender:v.id('users'),
         receiver:v.id('users')
-    }).index('by_sender',['sender']).index('by_receiver_sender',['receiver','sender']),
+    }).index('by_sender',['sender']).index('by_receiver_sender',['receiver','sender']).index('by_receiver',['receiver']),
 })

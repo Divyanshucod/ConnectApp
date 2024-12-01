@@ -28,15 +28,15 @@ export const create = mutation({
             throw new ConvexError("Receiver is not using communicate")
         }
 
-        const requestAlreadySent = await ctx.db.query('requests').withIndex('by_receiver_sender', (q) => q.eq('receiver',receiver._id).eq('sender',currUser._id))
+        const requestAlreadySent = await ctx.db.query('requests').withIndex('by_receiver_sender', (q) => q.eq('receiver',receiver._id).eq('sender',currUser._id)).unique()
 
         if(requestAlreadySent){
             throw new ConvexError('request was already send!')
         }
 
-        const requestAlreadyReceived = await ctx.db.query('requests').withIndex('by_receiver_sender', (q) => q.eq('receiver',currUser._id).eq('sender',receiver._id))
+        const requestAlreadyReceived = await ctx.db.query('requests').withIndex('by_receiver_sender', (q) => q.eq('receiver',currUser._id).eq('sender',receiver._id)).unique()
 
-        if(requestAlreadySent){
+        if(requestAlreadyReceived){
             throw new ConvexError('this user has already sent you a request')
         }
 
@@ -46,5 +46,31 @@ export const create = mutation({
         })
 
         return request
+    }
+})
+
+export const deny = mutation({
+    args:{
+        id:v.id("requests")
+    },
+    handler:async (ctx,args)=>{
+        const identity = await ctx.auth.getUserIdentity();
+
+        if(!identity){
+            throw new ConvexError('Unauthorized')
+        }
+
+        const currUser = await getUserByClerkId({clerkId:identity.subject,ctx})
+        if(!currUser){
+            throw new ConvexError("User not found")
+        }
+
+        const request = await ctx.db.get(args.id)
+
+        if(!request || request.receiver !== currUser._id){
+            throw new ConvexError("There was an error denying this requets!")
+        }
+
+        await ctx.db.delete(request._id)
     }
 })

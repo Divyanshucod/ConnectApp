@@ -12,6 +12,7 @@ import {
 import { useConversation } from "../../../../../hooks/useConversation";
 import { ThemeToggle } from "@/components/ui/theme/theme-toggle";
 import CustomDiv from "@/components/ui/CustomDiv";
+import { Badge } from "@/components/ui/badge";
 
 type Props = {};
 
@@ -30,6 +31,7 @@ const MobileNav = (props: Props) => {
                   <Tooltip>
                     <TooltipTrigger>
                     <CustomDiv active={path.active} icon={path.icon} />
+                    {path.count ? (<Badge className="absolute left-6 bottom-7 px-2">{path.count}</Badge>):null}
                     </TooltipTrigger>
                     <TooltipContent>
                       <p>{path.name}</p>

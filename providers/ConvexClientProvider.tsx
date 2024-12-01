@@ -15,7 +15,6 @@ const ConvexClientProvider = ({children}: Props) => {
     <ClerkProvider>
         <ConvexProviderWithClerk useAuth={useAuth} client={convex}>
             <Authenticated>{children}</Authenticated>
-            {/* {children} */}
           <AuthLoading><LoadingLogo/></AuthLoading>
         </ConvexProviderWithClerk>
     </ClerkProvider>

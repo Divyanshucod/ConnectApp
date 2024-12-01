@@ -2,10 +2,10 @@ import React from "react";
 
 interface CustomDivProps {
   active: boolean;
-  icon: React.ReactNode;
+  icon: any;
 }
 
-const CustomDiv: React.FC<CustomDivProps> = ({ active, icon }) => {
+const CustomDiv: React.FC<CustomDivProps> = ({ active,icon}) => {
   return (
     <div
       className={`${
@@ -14,7 +14,7 @@ const CustomDiv: React.FC<CustomDivProps> = ({ active, icon }) => {
           : "border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 w-10"
       } inline-flex items-center justify-center rounded-md transition-colors`}
     >
-      {icon}
+       {icon}
     </div>
   );
 };

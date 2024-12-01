@@ -5,6 +5,8 @@ import { WebhookEvent } from "@clerk/nextjs/server";
 import { internal } from "./_generated/api";
 
 const validatePayload = async (req:Request):Promise<WebhookEvent | undefined> =>{
+    console.log("payload validation");
+    
     const payload = await req.text()
 
     const svixHeaders = {
@@ -24,6 +26,8 @@ const validatePayload = async (req:Request):Promise<WebhookEvent | undefined> =>
 }
 
 const handleClerkWebhook = httpAction(async(ctx,req)=>{
+    console.log('function handleClerweb');
+    
     const event = await validatePayload(req)
 
     if(!event){
@@ -33,13 +37,13 @@ const handleClerkWebhook = httpAction(async(ctx,req)=>{
     }
 
     switch(event.type){
-        case "user.created":
+        case "user.created":{
             const user = await ctx.runQuery(internal.user.get,{clerkId:event.data.id})
             if(user){
               console.log(`updating user ${event.data.id} to ${event.data}`);
             }
-            break
-        case "user.updated":
+        }
+        case "user.updated":{
             console.log(`Creating/updating user: ${event.data.id}`);
             await ctx.runMutation(internal.user.create,{
                 username:`${event.data.first_name} ${event.data.last_name}`,
@@ -48,6 +52,7 @@ const handleClerkWebhook = httpAction(async(ctx,req)=>{
                 imageUrl:event.data.image_url
             })
             break
+        }
         default:
             console.log('Clerk webhook event not support',event.type);
             
