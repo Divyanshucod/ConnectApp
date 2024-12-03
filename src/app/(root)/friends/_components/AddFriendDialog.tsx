@@ -37,7 +37,7 @@ const AddFriendDialog = (props: Props) => {
 
          }).catch((error:any)=>{
             toast.error(
-                error instanceof ConvexError ? error.data : "Unexpected Error"
+                error instanceof ConvexError ? error.data : "Unknown Error"
             )
          })
     }
@@ -45,7 +45,7 @@ const AddFriendDialog = (props: Props) => {
     <Dialog>
         <Tooltip>
             <TooltipTrigger>
-             <Button>
+             <Button> 
                <DialogTrigger>
                   <UserPlus/>
                </DialogTrigger>
